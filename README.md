@@ -1,2 +1,2 @@
 # LauncherV2
-Launcher built in winforms, supposed to look like epic games launcher!
+Launcher built in WPF, supposed to look like epic games launcher!
