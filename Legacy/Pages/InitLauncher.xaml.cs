@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Newtonsoft.Json;
 using Arcane_Launcher.Responses.Lightswitch;
+using Arcane_Launcher.Utils;
 
 namespace Arcane_Launcher.Pages
 {
@@ -57,20 +58,26 @@ namespace Arcane_Launcher.Pages
             {
                 string url = $"{domain}/lightswitch/api/service/launcher/status";
                 HttpResponseMessage response = await httpClient.GetAsync(url);
+                if ((int)response.StatusCode != 200)
+                {
+                    Utils.Logger.warn("got bad response from " + url + " : " + await response.Content.ReadAsStringAsync());
+                    return null;
+                }
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
 
-                Console.WriteLine(responseBody);
+                Utils.Logger.good("Successfully got response from " + url + " : " + responseBody);
 
                 LightswitchStatus status = JsonConvert.DeserializeObject<LightswitchStatus>(responseBody);
 
-                Console.WriteLine($"Deserialized Status: {status?.Status}");
-                Console.WriteLine($"Deserialized Message: {status?.Message}");
-                Console.WriteLine($"Deserialized App Name: {status?.LauncherInfoDTO?.AppName}");
+                Utils.Logger.good($"Successfully got status: {status?.Status}");
+                Utils.Logger.good($"Message: {status?.Message}");
+                Utils.Logger.good($"Deserialized App Name: {status?.LauncherInfoDTO?.AppName}");
 
                 return status;
             } catch
             {
+                Utils.Logger.warn($"Could not get service status!");
                 return null;
             }
         }
