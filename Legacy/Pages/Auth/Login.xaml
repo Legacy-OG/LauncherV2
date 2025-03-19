@@ -7,7 +7,7 @@
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       xmlns:local="clr-namespace:Arcane_Launcher.Pages.Auth"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="720" d:DesignWidth="1280"
       Title="Login">
     <Grid Background="#101014">
         <Grid.RowDefinitions>
@@ -99,6 +99,13 @@
                     </Button.Template>
                 </Button>
             </StackPanel>
+        </Border>
+
+        <TextBlock x:Name="LoadingText"  Text="" Foreground="White" Margin="10, 0, 0, -5" VerticalAlignment="Bottom" Grid.Row="0"/>
+        <Border x:Name="LoadingBar" Height="10" Margin="10" Grid.Row="1" CornerRadius="5" Background="Transparent" BorderBrush="Transparent" Visibility="Hidden">
+            <Border CornerRadius="5" Background="#60abf7" BorderBrush="Transparent">
+                <ProgressBar IsIndeterminate="True" Foreground="#0078f2" Background="Transparent" BorderThickness="0"/>
+            </Border>
         </Border>
 
         <Grid x:Name="ErrorOverlay" Background="#80000000" Visibility="Collapsed">
