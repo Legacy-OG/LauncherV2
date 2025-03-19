@@ -31,15 +31,16 @@ namespace Arcane_Launcher.Pages
                 if (status.Status == "UP")
                 {
                     LoadingText.Text = "Status: UP";
-                    Thread.Sleep(1500);
+                    Thread.Sleep(1000);
                     LoadingText.Text = status.Message;
-                    Thread.Sleep(1500);
+                    Thread.Sleep(1000);
                     LoadingText.Text = "AppName: " + status.LauncherInfoDTO.AppName;
                     if (Window.GetWindow(this) is Window window)
                     {
                         window.Title = "Launcher - " + status.LauncherInfoDTO.AppName;
                     }
-                    Thread.Sleep(1500);
+                    Thread.Sleep(1000);
+                    Utils.Globals.MainFrame.Navigate(new Pages.Auth.Login());
                 }
                 else
                 {

@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Arcane_Launcher.Utils;
 
 namespace Arcane_Launcher
 {
@@ -21,6 +22,7 @@ namespace Arcane_Launcher
         public MainWindow()
         {
             InitializeComponent();
+            Utils.Globals.MainFrame = MainFrame;
             MainFrame.Navigate(new Pages.InitLauncher());
         }
 
