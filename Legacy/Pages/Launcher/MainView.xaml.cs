@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Arcane_Launcher.Utils;
 
 namespace Arcane_Launcher.Pages.Launcher
 {
@@ -23,6 +24,8 @@ namespace Arcane_Launcher.Pages.Launcher
         public MainView()
         {
             InitializeComponent();
+            Utils.Globals.ViewFrame = ViewFrame;
+            ViewFrame.Navigate(new ViewPages.Home());
         }
 
         public void ShowErrorOverlay(string errorTitle, string errorMessage)
@@ -38,6 +41,19 @@ namespace Arcane_Launcher.Pages.Launcher
         private void CloseErrorOverlay(object sender, RoutedEventArgs e)
         {
             ErrorOverlay.Visibility = Visibility.Collapsed;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ViewFrame.CanGoBack)
+            {
+                ViewFrame.GoBack();
+            }
         }
     }
 }

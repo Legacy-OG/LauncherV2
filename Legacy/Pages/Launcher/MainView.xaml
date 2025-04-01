@@ -13,32 +13,123 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="300, 0, 0, 0" Height="70">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Content="&lt;" Click="BackButton_Click" Grid.Column="0" FontSize="25" Background="Transparent" Foreground="White"
+            HorizontalAlignment="Left" VerticalAlignment="Center" Width="40" Height="70" Opacity="0.7" BorderBrush="Transparent" Margin="-10, 0, 15, 0">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" 
+                        CornerRadius="10" Padding="10,0,0,0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="1"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <TextBlock Grid.Column="1" Text="Home" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" Foreground="White"/>
+
+            <Border Background="White" Opacity="0.7" Width="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="30" Margin="0, 0, 20, 0" Grid.Column="2"/>
+
+            <Button Content="P" Grid.Column="3" FontSize="20" FontWeight="SemiBold" Background="#343437" Foreground="White"
+                HorizontalAlignment="Left" VerticalAlignment="Center" Width="40" Height="40" BorderBrush="Transparent" Margin="0, 0, 20, 0">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="BorderElement" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" 
+                            CornerRadius="50">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="BorderElement" Property="Background" Value="#636366"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
+
         <Grid HorizontalAlignment="Left" Width="300">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <Image Source="https://avatars.githubusercontent.com/u/202678516" Width="100" Height="100" VerticalAlignment="Top" Grid.Row="0" Margin="0, 50, 0, 0">
+            <Image Source="/Resources/legacy.png" Width="100" Height="100" VerticalAlignment="Top" Grid.Row="0" Margin="0, 50, 0, 0">
                 <Image.Effect>
                     <DropShadowEffect Color="Black" Direction="270" ShadowDepth="3" Opacity="0.3" BlurRadius="5"/>
                 </Image.Effect>
             </Image>
 
-            <Button Content="Home" Grid.Row="1" HorizontalAlignment="Stretch" Width="200" Height="40" Margin="0, 40, 0, 15"/>
-            <Button Content="Library" Grid.Row="2" HorizontalAlignment="Stretch" Width="200" Height="40" Margin="0, 0, 0, 15"/>
-            <Button Content="Servers" Grid.Row="3" HorizontalAlignment="Stretch" Width="200" Height="40" Margin="0, 0, 0, 15"/>
 
-            <Grid Grid.Row="4" Margin="20, 10, 20, 0">
+            <Grid Grid.Row="1" Margin="20, 0, 30, 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Button Grid.Row="0" HorizontalAlignment="Left" Width="250" Height="60" Margin="0, 40, 0, 5"
+                    BorderBrush="Transparent" Background="#343437" Foreground="White" FontSize="15" Opacity="1">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="BorderElement" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" 
+                                CornerRadius="10" Padding="10,0,0,0">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="20" Text="&#xE10F;" Foreground="White" Margin="10, 0, 10, 0"/>
+                                    <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0, 0, 0, 0"/>
+                                    <TextBlock Text="Home" Foreground="White" />
+                                </StackPanel>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="BorderElement" Property="Background" Value="#343437"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <Button Grid.Row="1" HorizontalAlignment="Left" Width="250" Height="60" Margin="0, 0, 0, 5"
+                    BorderBrush="Transparent" Background="Transparent" Foreground="White" FontSize="15" Opacity="0.7">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" 
+                                CornerRadius="10" Padding="10,0,0,0">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="20" Text="&#xE8F1;" Foreground="White" Margin="10, 0, 10, 0"/>
+                                    <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0, 0, 0, 0"/>
+                                    <TextBlock Text="Library" Foreground="White" />
+                                </StackPanel>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="Border" Property="Background" Value="#343437"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Row="2" Margin="20, 30, 20, 0">
                 <StackPanel>
                     <TextBlock Text="QUICK LAUNCH" Foreground="#B0B0B0" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="5, 0, 0, 5"/>
 
-                    <Border Width="250" Height="100" CornerRadius="10" Background="#1E1E1E" Padding="5" Cursor="Hand" Margin="0, 0, 10, 0">
+                    <Border Width="250" Height="100" CornerRadius="5" Opacity="0.9" Background="#1E1E1E" Padding="5" Cursor="Hand" Margin="0, 0, 10, 0">
                         <Grid>
-                            <Border Width="100" Height="100" CornerRadius="20" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Margin="0, 0, 170, 0">
+                            <Border Width="100" Height="100" CornerRadius="0" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Margin="0, 0, 160, 0">
                                 <Image Source="https://raw.githubusercontent.com/Legacy-OG/assets/refs/heads/main/Splash/11.png" Width="75" Height="90">
                                     <Image.Effect>
                                         <DropShadowEffect Color="Black" Direction="270" ShadowDepth="3" Opacity="0.3" BlurRadius="5"/>
@@ -46,17 +137,23 @@
                                 </Image>
                             </Border>
 
-                            <TextBlock Text="Fortnite" Foreground="White" FontSize="20" FontWeight="Bold"
+                            <Grid Margin="20, 0, 0, 0">
+                                <TextBlock Text="Fortnite" Foreground="White" FontSize="20" FontWeight="Bold"
                                 HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 0, 15, 10"/>
 
-                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Margin="0, 40, 45, 15">
-                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="14" Text="&#xE768;" Foreground="White" Margin="6, 2, 0, 0"/>
-                                <TextBlock Text=" Launch" Foreground="White"/>
-                            </StackPanel>
+                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Margin="0, 40, 45, 15">
+                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="14" Text="&#xE768;" Foreground="White" Margin="6, 2, 0, 0"/>
+                                    <TextBlock Text=" Launch" Foreground="White"/>
+                                </StackPanel>
+                            </Grid>
                         </Grid>
                     </Border>
                 </StackPanel>
             </Grid>
+        </Grid>
+
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="300, 70, 0, 0">
+            <Frame x:Name="ViewFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>
         </Grid>
 
         <Grid x:Name="ErrorOverlay" Background="#80000000" Visibility="Collapsed">

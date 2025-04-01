@@ -71,7 +71,7 @@ namespace Arcane_Launcher.Pages.Auth
                 JObject json = JObject.Parse(responseString);
                 if (json.ContainsKey("access_token"))
                 {
-                    Properties.Settings.Default.AccessToken = json["access_token"].ToString();
+                    Properties.Settings.Default.access_token = json["access_token"].ToString();
                     Properties.Settings.Default.Save();
                 }
                 else

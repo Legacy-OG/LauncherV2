@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Arcane_Launcher"
         mc:Ignorable="d"
         Title="Legacy" Height="720" Width="1280"
+        ResizeMode="NoResize"
         WindowStyle="None" AllowsTransparency="True" Background="#121212">
     <Window.Resources>
         <Style x:Key="CloseButtonStyle" TargetType="{x:Type Button}">

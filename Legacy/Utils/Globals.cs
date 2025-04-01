@@ -10,5 +10,6 @@ namespace Arcane_Launcher.Utils
     public class Globals
     {
         public static Frame MainFrame;
+        public static Frame ViewFrame;
     }
 }

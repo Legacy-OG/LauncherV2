@@ -40,7 +40,7 @@ namespace Arcane_Launcher.Pages
                         window.Title = "Launcher - " + status.LauncherInfoDTO.AppName;
                     }
                     Thread.Sleep(1000);
-                    if (!string.IsNullOrEmpty(Properties.Settings.Default.AccessToken))
+                    if (!string.IsNullOrEmpty(Properties.Settings.Default.access_token))
                     {
                         Utils.Globals.MainFrame.Navigate(new Pages.Launcher.MainView());
                     }
