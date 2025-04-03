@@ -16,17 +16,21 @@ using System.Windows.Shapes;
 namespace Arcane_Launcher.Pages.Launcher.ViewPages
 {
     /// <summary>
-    /// Interaction logic for Home.xaml
+    /// Interaction logic for Library.xaml
     /// </summary>
-    public partial class Home : Page
+    public partial class Library : Page
     {
-        public Home()
+        public Library()
         {
             InitializeComponent();
-            DisplayNameWelcome.Text = $"Welcome {Properties.Settings.Default.displayName}!";
         }
 
-        private void LaunchButton_Click(object sender, RoutedEventArgs e)
+        private void ChangePathButton_Click(object sender, RoutedEventArgs e)
+        {
+            Utils.Globals.MainView.ChangeView("ConfigurePath");
+        }
+
+        private void LaunchFN_Click(object sender, RoutedEventArgs e)
         {
             if (String.IsNullOrEmpty(Properties.Settings.Default.GamePath))
             {

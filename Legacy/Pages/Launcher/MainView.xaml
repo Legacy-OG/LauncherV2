@@ -38,11 +38,11 @@
                 </Button.Template>
             </Button>
 
-            <TextBlock Grid.Column="1" Text="Home" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" Foreground="White"/>
+            <TextBlock x:Name="TitleBar"  Grid.Column="1" Text="Home" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" Foreground="White"/>
 
             <Border Background="White" Opacity="0.7" Width="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="30" Margin="0, 0, 20, 0" Grid.Column="2"/>
 
-            <Button Content="P" Grid.Column="3" FontSize="20" FontWeight="SemiBold" Background="#343437" Foreground="White"
+            <Button x:Name="ProfileFlyout" Content="P" Grid.Column="3" FontSize="20" FontWeight="SemiBold" Background="#343437" Foreground="White"
                 HorizontalAlignment="Left" VerticalAlignment="Center" Width="40" Height="40" BorderBrush="Transparent" Margin="0, 0, 20, 0">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
@@ -80,7 +80,7 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <Button Grid.Row="0" HorizontalAlignment="Left" Width="250" Height="60" Margin="0, 40, 0, 5"
+                <Button Click="HomeButton_Click" x:Name="HomeButton" Cursor="Hand" Grid.Row="0" HorizontalAlignment="Left" Width="250" Height="60" Margin="0, 40, 0, 5"
                     BorderBrush="Transparent" Background="#343437" Foreground="White" FontSize="15" Opacity="1">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
@@ -101,7 +101,7 @@
                     </Button.Template>
                 </Button>
 
-                <Button Grid.Row="1" HorizontalAlignment="Left" Width="250" Height="60" Margin="0, 0, 0, 5"
+                <Button Click="LibraryButton_Click" x:Name="LibraryButton" Cursor="Hand" Grid.Row="1" HorizontalAlignment="Left" Width="250" Height="60" Margin="0, 0, 0, 5"
                     BorderBrush="Transparent" Background="Transparent" Foreground="White" FontSize="15" Opacity="0.7">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
@@ -127,27 +127,39 @@
                 <StackPanel>
                     <TextBlock Text="QUICK LAUNCH" Foreground="#B0B0B0" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="5, 0, 0, 5"/>
 
-                    <Border Width="250" Height="100" CornerRadius="5" Opacity="0.9" Background="#1E1E1E" Padding="5" Cursor="Hand" Margin="0, 0, 10, 0">
-                        <Grid>
-                            <Border Width="100" Height="100" CornerRadius="0" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Margin="0, 0, 160, 0">
-                                <Image Source="https://raw.githubusercontent.com/Legacy-OG/assets/refs/heads/main/Splash/11.png" Width="75" Height="90">
-                                    <Image.Effect>
-                                        <DropShadowEffect Color="Black" Direction="270" ShadowDepth="3" Opacity="0.3" BlurRadius="5"/>
-                                    </Image.Effect>
-                                </Image>
-                            </Border>
+                    <Button x:Name="QuickLaunchFN" Click="QuickLaunchFN_Click" Width="250" Height="100" Cursor="Hand" Background="Transparent" BorderBrush="Transparent" Margin="0, 0, 10, 0">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="ButtonBorder" Width="250" Height="100" CornerRadius="5" Opacity="0.9" Background="#1E1E1E" Padding="5">
+                                    <Grid>
+                                        <Border Width="100" Height="100" CornerRadius="0" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Margin="0, 0, 160, 0">
+                                            <Image x:Name="FortniteSplash" Source="\Resources\Splash.bmp" Width="75" Height="90">
+                                                <Image.Effect>
+                                                    <DropShadowEffect Color="Black" Direction="270" ShadowDepth="3" Opacity="0.3" BlurRadius="5"/>
+                                                </Image.Effect>
+                                            </Image>
+                                        </Border>
 
-                            <Grid Margin="20, 0, 0, 0">
-                                <TextBlock Text="Fortnite" Foreground="White" FontSize="20" FontWeight="Bold"
-                                HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 0, 15, 10"/>
+                                        <Grid Margin="20, 0, 0, 0">
+                                            <TextBlock Text="Fortnite" Foreground="White" FontSize="20" FontWeight="Bold"
+                                            HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 0, 15, 10"/>
 
-                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Margin="0, 40, 45, 15">
-                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="14" Text="&#xE768;" Foreground="White" Margin="6, 2, 0, 0"/>
-                                    <TextBlock Text=" Launch" Foreground="White"/>
-                                </StackPanel>
-                            </Grid>
-                        </Grid>
-                    </Border>
+                                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Margin="0, 40, 45, 15">
+                                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="14" Text="&#xE768;" Foreground="White" Margin="6, 2, 0, 0"/>
+                                                <TextBlock Text=" Launch" Foreground="White"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="ButtonBorder" Property="Background" Value="#2A2A2A"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
                 </StackPanel>
             </Grid>
         </Grid>

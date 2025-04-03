@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Arcane_Launcher.Pages.Launcher;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,7 @@ namespace Arcane_Launcher.Utils
     {
         public static Frame MainFrame;
         public static Frame ViewFrame;
+
+        public static MainView MainView;
     }
 }

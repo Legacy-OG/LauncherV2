@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Arcane_Launcher.Services;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -53,40 +54,19 @@ namespace Arcane_Launcher.Pages.Auth
 
         static async Task GetAccessToken(Login loginPage, string AuthorizationCode)
         {
-            using (HttpClient client = new HttpClient())
+            JObject json = await Authentication.GetAccessToken(loginPage.AuthorizationCodeBox.Text);
+            if (json.ContainsKey("access_token"))
             {
-                string url = "https://account-public-service-prod.ol.epicgames.com/account/api/oauth/token";
-
-                var requestData = new FormUrlEncodedContent(new[]
-                {
-                    new KeyValuePair<string, string>("grant_type", "authorization_code"),
-                    new KeyValuePair<string, string>("code", AuthorizationCode),
-                    new KeyValuePair<string, string>("token_type", "eg1"),
-                });
-
-                client.DefaultRequestHeaders.Add("Authorization", "Basic ZWM2ODRiOGM2ODdmNDc5ZmFkZWEzY2IyYWQ4M2Y1YzY6ZTFmMzFjMjExZjI4NDEzMTg2MjYyZDM3YTEzZmM4NGQ=");
-
-                HttpResponseMessage response = await client.PostAsync(url, requestData);
-                string responseString = await response.Content.ReadAsStringAsync();
-                JObject json = JObject.Parse(responseString);
-                if (json.ContainsKey("access_token"))
-                {
-                    Properties.Settings.Default.access_token = json["access_token"].ToString();
-                    Properties.Settings.Default.Save();
-                }
-                else
-                {
-                    Utils.Logger.error("Could not get access token!");
-                    MessageBox.Show($"Unable to login, If you are having issues please make sure you are logged into epic games on your browser then try again!", "Legacy | Authenticate", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    MessageBox.Show($"You will be redirected to the Epic Games website to login. After logging in please get the \"authorizationCode\".", "Legacy | Authenticate", MessageBoxButton.OK, MessageBoxImage.Information);
-                    Process.Start(new ProcessStartInfo("https://www.epicgames.com/id/api/redirect?clientId=ec684b8c687f479fadea3cb2ad83f5c6&responseType=code") { UseShellExecute = true });
-                    return;
-                }
-
-                Utils.Logger.good($"Successfully logged into {json["displayName"].ToString()}");
                 loginPage.LoadingBar.Visibility = Visibility.Visible;
                 loginPage.LoadingText.Text = $"Welcome {json["displayName"].ToString()}...";
                 Utils.Globals.MainFrame.Navigate(new Pages.Launcher.MainView());
+            }
+            else
+            {
+                Utils.Logger.error("Could not get access token!");
+                MessageBox.Show($"Unable to login, If you are having issues please make sure you are logged into epic games on your browser then try again!", "Legacy | Authenticate", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show($"You will be redirected to the Epic Games website to login. After logging in please get the \"authorizationCode\".", "Legacy | Authenticate", MessageBoxButton.OK, MessageBoxImage.Information);
+                Process.Start(new ProcessStartInfo("https://www.epicgames.com/id/api/redirect?clientId=ec684b8c687f479fadea3cb2ad83f5c6&responseType=code") { UseShellExecute = true });
             }
         }
 

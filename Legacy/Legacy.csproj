@@ -13,6 +13,13 @@
   <ItemGroup>
     <None Remove="Resources\Epic\Logo.png" />
     <None Remove="Resources\legacy.png" />
+    <None Remove="Resources\Splash.bmp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Splash.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +36,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="GFSDK_Aftermath_Lib.x64.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

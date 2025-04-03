@@ -22,7 +22,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Image Grid.Column="0" Source="/Resources/Epic/Logo.png" HorizontalAlignment="Left" Height="30" Width="Auto" Margin="10, 0, 0, 0"/>
-                <TextBlock Grid.Column="1"  Text="Welcome Pongo_x86" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10, 0, 0, 0" />
+                <TextBlock x:Name="DisplayNameWelcome" Grid.Column="1"  Text="Welcome Pongo_x86" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10, 0, 0, 0" />
             </Grid>
         </Border>
 
@@ -53,7 +53,7 @@
                     </Grid>
                     
                     <Grid Grid.Column="1" Margin="10">
-                        <Image Source="http://127.0.0.1:3551/imagecdn/lightlobbybg.png" Stretch="Fill"/>
+                        <Image Source="http://legacy-service-prod.ol.evolvefn.com:3551/imagecdn/lightlobbybg.png" Stretch="Fill"/>
                         <Border Background="#000000AA" VerticalAlignment="Bottom" Height="80">
                             <Border Opacity="0.9" Margin="8" CornerRadius="10" Background="#232323">
                                 <StackPanel Margin="5">
@@ -74,7 +74,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" Text="Launch Fortnite?" Foreground="White" VerticalAlignment="Center" FontSize="20" Margin="10, 0, 0, 0"/>
-                <Button Grid.Column="1" Content="Launch" FontSize="20" Background="#1A1A1A" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Height="50" Width="150" Margin="0, 0, 10, 0">
+                <Button Grid.Column="1" Click="LaunchButton_Click" Cursor="Hand" Content="Launch" FontSize="20" Background="#1A1A1A" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Height="50" Width="150" Margin="0, 0, 10, 0">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border x:Name="BorderElement" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" 
