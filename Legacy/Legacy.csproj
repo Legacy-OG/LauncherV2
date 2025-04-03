@@ -8,16 +8,17 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
     <Configurations>Debug;Release;Developer</Configurations>
-    <PackageIcon>legacy.ico</PackageIcon>
+    <PackageIcon>legacy.png</PackageIcon>
+    <ApplicationIcon>Resources\legacy.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Resources\Epic\Logo.png" />
-    <None Remove="Resources\legacy.png" />
     <None Remove="Resources\Splash.bmp" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Resources\legacy.ico" />
     <Content Include="Resources\Splash.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -45,6 +46,10 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Update="Resources\legacy.ico">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="Resources\legacy.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
